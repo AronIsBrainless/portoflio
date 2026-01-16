@@ -1,48 +1,50 @@
-    <script>
+<script>
+  // 1. Declare the variable OUTSIDE the function so it's "Global"
+        // You can now access this anywhere in your script.
+        let finalDownloadLink = ""; 
+
         async function getNewestDownload() {
             try {
-                // 1. Fetch the external XML file
-                const response = await fetch('/api/gdf_classic/var/current_data.xml');
+                const response = await fetch('https://brainless.ddns.net/api/gdf_classic/var/current_data.xml');
                 const xmlText = await response.text();
                 
-                // 2. Parse the text into an XML document
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(xmlText, "text/xml");
 
-                // 3. Get the target class from <newest-ver>
+                // Get the class we want to find (e.g., "a")
                 const newestTag = xmlDoc.querySelector("newest-ver");
+                if (!newestTag) throw new Error("Could not find <newest-ver> in XML");
+                
                 const targetClass = newestTag.getAttribute("class");
 
-                // 4. Find the version with that specific class
-                // We use an XPath or a selector to find the version where class matches
+                // Find the version matching that class
                 const versions = xmlDoc.getElementsByTagName("version");
-                let finalDownloadLink = ""; 
-
+                
                 for (let v of versions) {
                     if (v.getAttribute("class") === targetClass) {
+                        // 2. Assign the value to our global variable
                         finalDownloadLink = v.getAttribute("download-link");
                         break; 
                     }
                 }
 
-                // 5. Use the variable
-                if (finalDownloadLink) {
-                    document.getElementById("status").innerHTML = 
-                        `<a href="${finalDownloadLink}">Download Latest (Class: ${targetClass})</a>`;
+                // 3. Update the HTML
+                const statusElement = document.getElementById("status");
+                if (statusElement && finalDownloadLink) {
+                    statusElement.innerHTML = `<a href="${finalDownloadLink}">Download Link Found</a>`;
+                    console.log("Global variable set to:", finalDownloadLink);
                 } else {
-                    document.getElementById("status").innerText = "No matching version found.";
+                    statusElement.innerText = "Link not found for class: " + targetClass;
                 }
 
             } catch (error) {
-                console.error("Error loading XML:", error);
-                document.getElementById("status").innerText = "Failed to load XML file.";
+                console.error("Error:", error);
+                // The check below prevents the "null" error if the div is missing
+                const statusElement = document.getElementById("status");
+                if (statusElement) statusElement.innerText = "Error loading XML.";
             }
         }
 
-        // Run the function
+        // Run the logic
         getNewestDownload();
-
-        if (finalDownloadLink !== "") {
-            window.location.href = download_link_newest
-        }
-    </script>
+</script>
