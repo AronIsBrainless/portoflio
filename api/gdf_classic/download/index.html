@@ -2,7 +2,7 @@
         async function getNewestDownload() {
             try {
                 // 1. Fetch the external XML file
-                const response = await fetch('/api/gdf-classic/var/current-data.xml');
+                const response = await fetch('/api/gdf_classic/var/current-data.xml');
                 const xmlText = await response.text();
                 
                 // 2. Parse the text into an XML document
