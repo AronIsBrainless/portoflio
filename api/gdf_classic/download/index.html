@@ -1,0 +1,54 @@
+<script>
+    var download_link_newest = "https://google.com"
+    
+
+
+    <script>
+        async function getNewestDownload() {
+            try {
+                // 1. Fetch the external XML file
+                const response = await fetch('/api/gdf-classic/var/current-data.xml');
+                const xmlText = await response.text();
+                
+                // 2. Parse the text into an XML document
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+
+                // 3. Get the target class from <newest-ver>
+                const newestTag = xmlDoc.querySelector("newest-ver");
+                const targetClass = newestTag.getAttribute("class");
+
+                // 4. Find the version with that specific class
+                // We use an XPath or a selector to find the version where class matches
+                const versions = xmlDoc.getElementsByTagName("version");
+                let finalDownloadLink = ""; 
+
+                for (let v of versions) {
+                    if (v.getAttribute("class") === targetClass) {
+                        finalDownloadLink = v.getAttribute("download-link");
+                        break; 
+                    }
+                }
+
+                // 5. Use the variable
+                if (finalDownloadLink) {
+                    document.getElementById("status").innerHTML = 
+                        `<a href="${finalDownloadLink}">Download Latest (Class: ${targetClass})</a>`;
+                } else {
+                    document.getElementById("status").innerText = "No matching version found.";
+                }
+
+            } catch (error) {
+                console.error("Error loading XML:", error);
+                document.getElementById("status").innerText = "Failed to load XML file.";
+            }
+        }
+
+        // Run the function
+        getNewestDownload();
+
+        if (finalDownloadLink !== "") {
+            window.location.href = download_link_newest
+        }
+    </script>
+</script>
