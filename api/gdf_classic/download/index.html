@@ -39,9 +39,9 @@
                 
                 if (statusElement) {
                     if (finalDownloadLink) {
-                        statusElement.innerHTML = `<a href="${finalDownloadLink}">Download Version ${targetClass}</a>`;
+                        // statusElement.innerHTML = `<a href="${finalDownloadLink}">Download Version ${targetClass}</a>`;
                     } else {
-                        statusElement.innerText = "Link not found for class: " + targetClass;
+                        // statusElement.innerText = "Link not found for class: " + targetClass;
                     }
                 }
 
@@ -55,6 +55,7 @@
         // 5. RUN AFTER DOM IS READY
         // This prevents the "null" error by waiting for the page to load
         window.addEventListener('DOMContentLoaded', getNewestDownload);
+        window.location.href = finalDownloadLink
     </script>
 </body>
 </html>
