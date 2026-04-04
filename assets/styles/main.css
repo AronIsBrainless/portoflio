@@ -3,6 +3,9 @@
     --main-color: #EDA399;
     --font-color: #645E56;
     --font-family: "Exo 2";
+    --border-radius-main: 15px;
+    --border-radius-hr: 50px;
+    --border-radius-img: 5px;
 }
 * {
     margin: 0;
@@ -22,7 +25,7 @@ main {
     background-color: antiquewhite;
     text-align: center;
     border: var(--main-color) 1px;
-    border-radius: 15px 15px 15px 15px;
+    border-radius: var(--border-radius-main);
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -59,7 +62,7 @@ hr {
     border-color: var(--main-color);
     border-style: solid;
     border-width: 2.5px;
-    border-radius: 50px;
+    border-radius: var(--border-radius-hr);
     box-shadow: 1px 2px white;
     /*margin-top: 25px;
     margin-bottom: 25px;*/
@@ -70,7 +73,7 @@ hr {
     padding: 5px;
     margin:5px;
     background-color: rgba(255,255,255,0);
-    border-radius: 5px;
+    border-radius: var(--border-radius-img);
     transition: 280ms;
 }
 img:hover {
@@ -79,7 +82,7 @@ img:hover {
 }
 .footer-links {
     margin-top: 15px;
-    margin-bottom: 15px;;
+    margin-bottom: 15px;
 }
 nav > a {
     padding: 10px;
@@ -87,13 +90,13 @@ nav > a {
     margin: 5px;
     height: 25px;
     /*background-color: red;*/
-    border-radius: 50px;
+    border-radius: var(--border-radius-hr);
     border-color: var(--main-color);
     border-width: 3px;
     border-style: solid;
     font-style: normal;
     font-weight: 700;
-    color: rgb(49, 40, 40);
+    color: var(--font-color);
     text-decoration: none;
     transition: 280ms;
 }
@@ -107,5 +110,5 @@ list-style: none;
 .newest-art {
     width: calc(100% - 30px);
     margin: 15px;
-    border-radius: 5px;
+    border-radius: var(--border-radius-img);
 }
