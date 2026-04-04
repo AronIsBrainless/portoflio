@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCWorldConverter</title>
+    <link rel="shortcut icon" href="/assets/img/HeadAron.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/styles/main.css">
+    <!-- Own style colors -->
+    <style>
+        @font-face {
+            font-family: BoldPixels;
+            src: url("https://brainless.ddns.net/assets/styles/fonts/BoldPixels.ttf");
+        }
+        :root {
+            --main-color: #373f31ff;
+            --font-family: BoldPixels;
+            --border-radius-main: 0;
+            --border-radius-hr: 0;
+            --border-radius-img: 0;
+        }
+        .download-link {
+            margin: auto;
+            display: block;
+            border-radius: var(--border-radius-hr);
+            border-color: var(--main-color);
+            border-style: solid;
+            border-width: 2.5px;
+            width: calc(100% - 35px);
+            height: 50px;
+            transition: 280ms;
+            text-decoration: none;
+            margin-top: 5px;
+        }
+        .download-link:hover {
+            background-color: rgba(255,255,255,0.8);
+            transition: 280ms;
+        }
+        .download-link > img {
+            float: left;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <!--<img src="/assets/img/HeadAron.png" alt="My Head">-->
+            <h1>MCWorldConverter</h1>
+            <label>Convert Minecraft 26.1 worlds to older versions</label>
+        </header>
+        <hr>
+        <nav>
+            <a href="/">Index</a>
+            <a href="#">Download</a>
+            <a href="https://gitlab.com/AronIsBrainless/mcworldconverter">Gitlab</a>
+            
+        </nav>
+        <hr>
+        <section>
+            <h2>About</h2><br>
+            <div class="flexbox-grid">
+                <p>MCWorldConverter is a project which converts new world format from 26.1 to older one.</p>
+            </div>
+            <h2>Images</h2><br>
+            <div class="flexbox-grid">
+                no images
+            </div>
+            <h2>Download</h2><br>
+            <div class="flexbox-grid">         
+                <a href="#" target="_blank" rel="noopener noreferrer" class="download-link">
+                    <img src="#" alt="Windows"><h2>Windows x64</h2><p>Version: 0.0.0Alpha</p>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="download-link">
+                    <img src="#" alt="Debian"><h2>Linux Debian package</h2><p>Version: 0.0.0Alpha</p>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="download-link">
+                    <img src="#" alt=""><h2>Build yourself</h2><p>Tutorial on how to do it.</p>
+                </a>
+            </div>
+        </section>
+        <hr>
+        <footer>
+            <p>&copy 2026 Darowimu</p>
+            <div class="footer-links">
+                <p>NOT AN OFFICIAL MINECRAFT PRODUCT OR SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT</p>
+            </div> 
+        </footer>
+    </main>
+</body>
+</html>
